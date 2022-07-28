@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello,ZZT!</title>
+    <link rel="icon" type="image/x-icon" href="">
+</head>
+<style>
+        /*动态背景*/
+        body{
+            margin: 0;
+            padding: 0;
+            min-height: 200vh;
+
+            background: linear-gradient(125deg,#27ae60,#2980b9,#ffccff,#e743c3,#8e44ad);
+
+            background-size: 500%;
+
+            animation: bgAnimation 10s linear infinite;
+                                                                    
+        }
+        @keyframes bgAnimation {
+        0%{
+            background-position: 0% 50%;
+        }
+        50%{
+            background-position: 100% 50%;
+        }
+        75%{
+            background-position: 75% 50%;
+        }
+        100%{
+            background-position: 0% 50%;
+        }
+    }
+    /*主题文字*/
+    .zt1{
+        padding-top: 120px;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        max-height: 55vh;
+        width: 100%;
+        justify-content: center;
+        
+        flex-wrap: wrap;
+    }
+    .zt1 span{
+        font-size: 2rem;
+        color: transparent;
+        text-shadow: 
+            0px 0px 1px rgba(255,255,255, .6),
+            0px 4px 4px rgba(0,0,0, .05);
+        letter-spacing: .2rem;  
+    }
+
+    /*文本框内容*/
+    .query{
+        
+    }
+
+
+
+    /*搜素文本框*/
+    .search{
+        padding-top: 30px;
+        position: relative;
+        z-index: 10;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    /*搜素框css*/
+    .search input{
+        width: 325px;
+        height: 35px;
+        font-size: 15px;
+        
+        border-color: violet;
+        border-radius: 20px;
+        
+        background: rgba(255,255,255, .6);
+        border-style: solid;
+        text-align: center;
+        color: violet;
+
+        transition: all 0.3s;
+    }
+    .search input:focus{
+        width: 345px;
+        outline:none; 
+        border-color: #9966ff;
+        color:#9966ff;
+        background: #fff;
+    }
+
+
+    /*搜素按钮*/
+    .btn1{
+        padding-top: 20px;
+        position: relative;
+        z-index: 10;
+
+        display: flex;
+        justify-content: center;
+        
+        flex-wrap: wrap;
+    }
+    .btn{
+        border-style: solid;
+        border-radius: 10px;
+        border-color: violet;
+        background: rgba(255,255,255, .6);
+        color:violet;
+        width: 100px;
+        height: 25px;
+        transition: all 1s;
+    }
+    .btn:hover{
+        border-color: #9966ff;
+        color:#9966ff;
+        background: #fff;
+    }
+    .btn:active{
+        border-color: red;
+        color:red;
+        transition: all 0.1s;
+    }
+    /*查询按钮*/
+    .content{
+        padding-top: 24px;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .btn2{
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 15px;
+        border-style: solid;
+        border-radius: 10px;
+        border-color: violet;
+        background: rgba(255,255,255, .6);
+        color:violet;
+        width: 100px;
+        height: 25px;
+        transition: all 1s;
+    }
+    .btn2:hover{
+        border-color: #9966ff;
+        color:#9966ff;
+        background: #fff;
+        cursor: 'pointer';/*显示小手*/
+    }
+    .btn2:active{
+        border-color: red;
+        color:red;
+        transition: all 0.1s;
+    }
+
+    /*=设置（二级下拉菜单）*/
+    .Menu-Box{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        width: 250px;
+    }
+    /*拉近一二三级菜单距离*/
+    .menu1 ul{
+        margin: 0;
+        padding: 0;
+    }
+    .menu1 li{
+        text-align: center;
+        font-size: 3px;
+        list-style: none;
+        width: 50px;
+        height: 20px;
+        background: rgba(255,255,255, .6);
+        border: 2px solid violet; 
+        border-radius: 10px;
+        color: violet;
+        transition: all 0.5s;
+    }
+    /*为按钮添加动态效果*/
+    .menu1 li:hover{
+        border-color: #9966ff;
+        color:#9966ff;
+        background: #fff;
+        cursor: 'pointer';/*显示小手*/
+    }
+    .menu1 li:active{
+        border-color: red;
+        color:red;
+        transition: all 0.1s;
+    }
+    .menu1 li:hover{
+        cursor: pointer;/*显示小手*/
+    }
+    
+
+    /*隐藏二三级菜单栏*/
+    .menu2{
+        display: none;
+    }
+    .menu3{
+        display: none;
+    }
+    .menu3-2{
+        display: none;
+    }
+
+    /*设置菜单表格的内边距的外边距*/
+
+    .menu2 ul{
+        margin: 0;
+        padding: 0;
+    }
+    .menu3 ul{
+        margin: 0;
+        padding: 0;
+    }
+    .menu3-2 ul{
+        margin: 0;
+        margin-top: 24px;
+        padding: 0;
+    }
+    /*菜单样式*/
+    .menu2 ul li{
+        list-style: none; 
+        text-align: center;
+        font-size: 10px;
+        width: 100px;
+        height: 20px;
+        cursor: 'pointer';/*显示小手*/
+
+        background: rgba(255,255,255, .6);
+        border: 2px solid violet; 
+        border-radius: 10px;
+        color: violet;
+        transition: all 0.5s;
+    }
+    .menu2 ul li:active{
+        border-color: red;
+        color:red;
+        transition: all 0.1s;
+    }
+    .menu2 ul li:hover{
+        border-color: #9966ff;
+        color:#9966ff;
+        background: #fff;
+        cursor: pointer;/*显示小手*/
+    }
+
+
+
+    /*搜素设置*/
+    #bd1,#sg1,#gg1,#by1,#wy1,#kg1,#qq1{
+        list-style: none; 
+        text-align: center;
+        font-size: 10px;
+        width: 60px;
+        height: 20px;
+        
+
+        background: rgba(255,255,255, .6);
+        border: 2px solid violet;
+        border-radius: 10px;
+        color: violet;
+        transition: all 0.5s;
+    }
+    /*搜素设置的动态效果*/
+    #bd1:hover,#sg1:hover,#gg1:hover,
+    #by1:hover,#wy1:hover,#kg1:hover,
+    #qq1:hover{
+        border-color: #9966ff;
+        color:#9966ff;
+        background: #fff;
+        cursor: pointer;/*显示小手*/
+    }
+    /*三级菜单的单击效果*/
+    .menu3 ul li:active{
+        border-color: red;
+        color:red;
+        transition: all 0.1s;
+    }
+
+    .menu3-2 ul li:active{
+        border-color: red;
+        color:red;
+        transition: all 0.1s;
+    }
+    /*定义搜素引擎:使用的样式*/
+    #z{
+        list-style: none; 
+        text-align: center;
+        font-size: 10px;
+        width: 60px;
+        height: 20px;
+        cursor: 'pointer';/*显示小手*/
+
+        background: #fff;
+        border: 2px solid red; 
+        border-radius: 10px;
+        color: red;
+    }
+    /*设置删除键位*/
+   
+    @media (max-width:418px) {
+        #deleteid{
+            font-family: "Microsoft YaHei";
+            color:violet;
+            position:absolute;
+            left: 83%;
+            cursor: pointer;/*显示小手*/
+        }
+    }
+    @media (min-width:540px) {
+        #deleteid{
+            font-family: "Microsoft YaHei";
+            color:violet;
+            position:absolute;
+            left: 75%;
+            cursor: pointer;/*显示小手*/
+        }
+    }
+    @media (min-width:768px) {
+        #deleteid{
+            font-family: "Microsoft YaHei";
+            color:violet;
+            position:absolute;
+            left: 67%;
+            cursor: pointer;/*显示小手*/
+        }
+    }
+    @media (min-width:820px) {
+        #deleteid{
+            font-family: "Microsoft YaHei";
+            color:violet;
+            position:absolute;
+            left: 65%;
+            cursor: pointer;/*显示小手*/
+        }
+    }
+   @media (min-width:1024px) {
+    #deleteid{
+            font-family: "Microsoft YaHei";
+            color:violet;
+            position:absolute;
+            left: 63%;
+            cursor: pointer;/*显示小手*/
+        }
+   }
+    @media (min-width:1300px) {
+        #deleteid{
+            font-family: "Microsoft YaHei";
+            color:violet;
+            position:absolute;
+            left: 59%;
+            cursor: pointer;/*显示小手*/
+        }
+    }
+    @media (min-width:1280px) {
+        #deleteid{
+            font-family: "Microsoft YaHei";
+            color:violet;
+            position:absolute;
+            left: 59%;
+            cursor: pointer;/*显示小手*/
+        }
+    }
+    
+</style>
+<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.js"></script>
+<body>
+    <!--设置-->
+    <div class="Menu-Box">
+        <div class="menu1">
+            <ul>
+                <li id="show">设置</li>
+            </ul>
+        </div>
+        <div class="menu2">
+            <ul>
+                <li onclick="show1()">搜素设置</li>
+                <li onclick="music()">音乐搜素</li>
+            </ul>
+        </div>
+        <div class="menu3">
+             <ul>
+                 <li onclick="baidu1()" id="z">百度</li>
+                 <li onclick="sougou1()" id="sg1">搜狗</li>
+                 <li onclick="guge1()" id="gg1">谷歌</li>
+                 <li onclick="biying1()" id="by1">必应</li>
+             </ul>
+        </div>
+        <div class="menu3-2">
+            <ul>
+                <li onclick="wy()" id="wy1">网易音乐</li>
+                <li onclick="kg()" id="kg1">酷狗音乐</li>
+                <li onclick="QQ()" id="qq1">QQ音乐</li>
+            </ul>
+       </div>
+     </div>
+ 
+    <div class="zt1">
+        <span id="myclock">Welcome</span>
+    </div>
+    <div class="search">
+        <input type="text" value="" class="query" id="textS" />
+        <span id="deleteid" onclick="delete1()" style="display: none;">X</span>
+    </div>
+    <div class="btn1" >
+        <button class="btn" onclick="search()">search</button>
+    </div>
+    
+    <div class="content">
+        <button onclick="url1()" class="btn2">BiliBili</button>
+        <button onclick="url2()" class="btn2">Steam</button>
+        <button onclick="url3()" class="btn2">Npm.JS</button>
+        <button onclick="url4()" class="btn2">leetcode</button>
+    </div>
+<script>
+
+    //设置触发
+    //设置按钮触发显示二级菜单:
+    document.getElementById("show").onclick=function(){
+        var s2=document.querySelector('.menu2');
+        var s3=document.querySelector('.menu3');
+        var s3b=document.querySelector('.menu3-2');
+        if(s2.style.display=='none'){
+            s2.style.display='block';
+        }else{
+            s2.style.display='none';
+            s3.style.display='none';
+            s3b.style.display='none';
+        }
+       
+    }
+
+
+
+    //全局变量：第三级菜单
+    var s3b=document.querySelector('.menu3-2');
+    var s3=document.querySelector('.menu3');
+    //设置---搜素设置:  三级菜单显示.
+    function show1() {
+        if(s3.style.display=='none'){
+            s3.style.display='block';
+            s3b.style.display='none';
+        }else{
+            s3.style.display='none';
+            s3b.style.display='none';
+        }
+    }
+
+    //设置---音乐设置:  三级菜单显示.
+    function music(){
+        if(s3b.style.display=='none'){
+            s3.style.display='none';
+            s3b.style.display='block';
+        }else{
+            s3.style.display='none';
+            s3b.style.display='none';
+        }
+    }
+
+    //搜素引擎设置(切换url)
+    var btn1=document.getElementById("z");
+    var btn2=document.getElementById("sg1");
+    var btn3=document.getElementById("gg1");
+    var btn4=document.getElementById("by1");
+    //音乐引擎设置(切换url)
+    var mu1=document.getElementById("wy1");
+    var mu2=document.getElementById("kg1");
+    var mu3=document.getElementById("qq1");
+
+    //1.百度
+    function baidu1(){
+       if(btn1.id=='bd1'){
+           btn1.id="z";
+           btn2.id="sg1";
+           btn3.id="gg1";
+           btn4.id="by1";
+           mu1.id="wy1";
+           mu2.id="kg1";
+           mu3.id="qq1";
+       }
+    }   
+
+    //2.搜狗
+    function sougou1(){
+        if(btn2.id=='sg1'){
+            btn1.id="bd1";
+            btn2.id="z";
+            btn3.id="gg1";
+            btn4.id="by1";
+            mu1.id="wy1";
+            mu2.id="kg1";
+            mu3.id="qq1";
+        }
+    }
+
+    //3.谷歌
+    function guge1(){
+        if(btn3.id=='gg1'){
+            btn1.id="bd1";
+            btn2.id="sg1";
+            btn3.id="z";
+            btn4.id="by1";
+            mu1.id="wy1";
+            mu2.id="kg1";
+            mu3.id="qq1";
+        }
+    }
+
+    //4.必应
+    function biying1(){
+        if(btn4.id=='by1'){
+            btn1.id="bd1";
+            btn2.id="sg1";
+            btn3.id="gg1";
+            btn4.id="z";
+            mu1.id="wy1";
+            mu2.id="kg1";
+            mu3.id="qq1";
+        }
+    }
+
+
+    //高级设置(音乐设置)
+    //网易云
+    function wy(){
+        if(mu1.id=='wy1'){
+            btn1.id="bd1";
+            btn2.id="sg1";
+            btn3.id="gg1";
+            btn4.id="by1";
+            mu1.id="z";
+            mu2.id="kg1";
+            mu3.id="qq1";
+        } 
+    }
+    //酷狗
+    function kg(){
+        if(mu2.id=='kg1'){
+            btn1.id="bd1";
+            btn2.id="sg1";
+            btn3.id="gg1";
+            btn4.id="by1";
+            mu1.id="wy1";
+            mu2.id="z";
+            mu3.id="qq1";
+        } 
+    }
+    //QQ音乐
+    function QQ(){
+        if(mu3.id=='qq1'){
+            btn1.id="bd1";
+            btn2.id="sg1";
+            btn3.id="gg1";
+            btn4.id="by1";
+            mu1.id="wy1";
+            mu2.id="kg1";
+            mu3.id="z";
+        } 
+    }
+
+
+   
+    //query:文本框内容 
+    //serchBtn:按钮
+    var query=document.querySelector('.query');
+    var searchBtn=document.querySelector('.btn');
+
+    function search(){
+       if(query.value==''){
+           alert('你在搜索空气吗？');
+       }else{
+            if(btn1.id=='z') return window.open('https://www.baidu.com/s?wd='+query.value);//百度
+
+            if(btn2.id=='z') return window.open('https://www.sogou.com/web?query='+query.value);//搜狗
+
+            if(btn3.id=='z') return window.open('https://www_google_com_djwblnup8zwepjoc.copointer.com:4003/search?q='+query.value);//谷歌
+
+            if(btn4.id=='z') return window.open('https://cn.bing.com/search?q='+query.value);//必应
+
+            if(mu1.id=='z') return window.open('https://music.163.com/#/search/m/?s='+query.value);//网易云
+
+            if(mu2.id=='z') return window.open('https://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord='+query.value);//酷狗
+
+            if(mu3.id=='z') return window.open('https://y.qq.com/n/ryqq/search?w='+query.value+'&t=song&remoteplace=txt.yqq.center');//qq音乐
+
+       }
+        
+    }
+    //如果使用者----回车的话:
+    //1.2版：代码优化，改进此处代码，模拟按键操作触发搜素函数
+    document.onkeydown = function(e){
+        var ev=document.all ? window.event : e;
+        if(ev.keyCode==13){
+            return search()
+        }
+    }
+
+
+    //时间配置
+    function time(){
+        var today=new Date();   //获得当前时间
+        var hh=today.getHours();    //获得小时
+        var mm=today.getMinutes();  //获得分钟
+        var ss=today.getSeconds();  //获得秒
+
+        document.getElementById("myclock").innerHTML=hh+":"+mm+":"+ss;
+        //console.log('目前的时间：'+hh+":"+mm+":"+ss);
+    }
+        //使用setInterval()每间隔指定毫秒后调用time()
+        var myTime=setInterval("time()",1000);
+    
+
+    //其他网页的url链接
+    function url1(){
+        window.open('https://www.bilibili.com/');
+    }
+    function url2(){
+        window.open('https://store.steampowered.com/');
+    }
+    function url3(){
+        window.open('https://www.npmjs.com/');
+    }
+    function url4(){
+        window.open('https://leetcode-cn.com/');
+    }
+
+    //删除按钮显示
+    function showdel(){
+        var textZ=document.getElementById('textS');
+        var del=document.getElementById('deleteid');
+       if(textZ.value!=''){
+           del.style.display='block';
+       }else{
+           del.style.display='none';
+       }
+    }
+    //删除按钮显示：每隔1秒检查一次
+    var myTime2=setInterval("showdel()",100);
+    //删除按钮
+    function delete1(){
+        var textZ=document.getElementById('textS');
+        textZ.value="";
+    }
+    //开场F12
+    console.log('欢迎使用控制台!');
+    console.error('请不要乱动一些主要文件!');
+    console.warn('欢迎您使用我的网页，BUG反馈邮箱:1257547900@qq.com~');
+</script>
+
+</body>
+</html>
