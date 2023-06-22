@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello Zzt!</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      min-height: 200vh;
+      background: linear-gradient(125deg,#9082be,#6961e1,#773fcb,#6961e1,#9082be);
+      background-size: 500%;
+      animation: bgAnimation 30s linear infinite;
+    }
+    @keyframes bgAnimation {
+        0%{background-position: 0% 50%;}
+        50%{background-position: 100% 50%;}
+        75%{background-position: 75% 50%;}
+        100%{background-position: 0% 50%;}
+    }
+    a{
+      text-decoration: none;
+    }
+	ul{
+		text-decoration: none;
+	}
+	ul li{
+		cursor: pointer;
+		list-style: none;
+	}
+	input{
+		border: none;
+		border: 0;
+		outline: none;
+		text-align: center;
+	}
+    .Size-colors{
+      color: black;
+    }
+    .Sizes{
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    /*顶部导航栏*/
+    .header{
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      height: 50px;
+      border-bottom: 1px solid rgb(231, 228, 228);
+    }
+    .header-ul{
+      width: 100%;
+      height: 50px;
+      float: left;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-ul li{
+      width: 100px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .header-ul li a{
+      color: black;
+      font-weight: bold;
+      transition: all linear 0.4s;
+    }
+    .header-ul li a:hover{
+      color: #6961e1;
+    }
+    #myclock{
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    /*设置*/
+    .header-btns{
+      display: flex;
+      justify-items: left;
+      width: 100%;
+      height: 150px;
+      
+    }
+    .header-btn2,.header-btn3,.header-btn3-1,.header-btn3-2,.header-btn3-3{
+      display: none;
+      align-items: center;
+      flex-direction: column;
+      width: 105px;
+      height: 100%;
+      background-color: #fff;
+    }
+    .header-btn3,.header-btn3-1,.header-btn3-2,.header-btn3-3{
+      border-left: 1px solid rgb(231, 228, 228);
+    }
+	.header-btn2 ul,.header-btn3 ul,.header-btn3-1 ul,.header-btn3-2 ul,.header-btn3-3 ul{
+		width: 100%;
+		height: 100%;
+	}
+	.header-btn2 ul li{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 40px;
+		font-size: 0.9rem;
+		font-weight: bold;
+	}
+    .header-btn3 ul li,.header-btn3-1 ul li,.header-btn3-2 ul li,.header-btn3-3 ul li{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 35px;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+	
+    /*中间*/
+    .center{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 300px;
+    }
+
+   
+    /*被选中的样式*/
+    #z{
+      color:#773fcb;
+      border: 1px solid #773fcb;
+    }
+	/*菜单栏样式*/
+	#bd,#sg,#by,#gg,#wyy,#kg,#Qm,#kd{
+		color: #000;
+	}
+	/**/
+	.center{}
+	
+	/*控制中心断点样式*/
+	.center-serachText{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 500px;
+		height: 80px;
+		margin-top: 50px;
+	}
+	/*搜索栏长度大小*/
+	.center-serachText input{
+		width: 280px;
+		height: 27px;
+		border: 1px solid #000;
+		border-top-left-radius: 15px;
+		border-bottom-left-radius: 15px;
+	}
+	/*搜索栏按钮大小*/
+	.btnCenter{
+		border: 1px solid #000;
+		width: 80px;
+		height: 27px;
+		color: #fff;
+		background-color: #6961e1;
+		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
+		font-size: 0.9rem;
+		text-align: center;
+		line-height: 27px;
+		cursor: pointer;
+		transition: linear 0.5s; 
+	}
+	.btnCenter:hover{
+		background-color: #fff;
+		color: #6961e1;
+	}
+	
+	/*超链接样式表*/
+	.center-https{
+		display: flex;
+		justify-items: center;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		height: 200px;
+		background-color: aquamarine;
+	}
+	
+	
+	
+	/*尾部*/
+	.footer{
+	  width: 100%;
+	  height: 50px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  color: #fff;
+	  font-size: 0.8rem;
+	}
+  </style>
+</head>
+<body>
+  <!--首页-->
+  <div class="header">
+    <ul class="header-ul Sizes">
+      <li><a href="#" onclick="Settings()">设置</a></li>
+      <li style="width: 400px;"><a href="#" id="myclock" onclick="OtherTimes()" style="font-weight: bold;">欢迎使用，显示北京时间！</a></li>
+      <li><a href="#" onclick="alert('作者QQ:1257547900')">教程</a></li>
+    </ul>
+  </div>
+  <!--首页-二三级菜单按钮-->
+  <!--设置-->
+  <div class="header-btns">
+      <!--二级菜单-->
+      <div class="header-btn2" style="display:none;">
+		  <ul>
+			  <li onclick="search1()">搜素设置</li>
+			  <li onclick="music()">音乐设置</li>
+			  <li onclick="otherSearch()">其他搜素</li>
+		  </ul>
+      </div>
+      <!--三级菜单：搜素设置-->
+      <div class="header-btn3-1" style="display:none;">
+		  <ul>
+			  <li onclick="baidu1()" id="z">百度搜索(默认)</li>
+			  <li onclick="sougou1()" id="sg">搜狗搜素</li>
+			  <li onclick="biying1()" id="by">必应搜索</li>
+			  <li onclick="guge1()" id="gg">谷歌搜素</li>
+		  </ul>
+      </div>
+      <!--三级菜单：音乐设置-->
+      <div class="header-btn3-2" style="display: none;">
+        <ul>
+			<li onclick="wangyiyun1()" id="wyy">网易云音乐</li>
+			<li onclick="QQmusic()" id="Qm">QQ音乐</li>
+			<li onclick="kugoumusic()" id="kg">酷狗音乐</li>
+		</ul>
+      </div>
+      <!--三级菜单：其他搜素设置-->
+      <div class="header-btn3-3" style="display: none;">
+		  <ul>
+			   <li onclick="kuaidi1()" id="kd">快递进度搜素</li>
+		  </ul>
+      </div>
+  </div>
+  
+  <!--中间-->
+  <div class="center">
+	  
+	  <!--控制中心断点-->
+	  <div class="center-serachText">
+		  <input  type="text" id="searchText1" vlaue='z'>
+		  <div class="btnCenter" onclick="Search()">搜索</div>
+	  </div>
+		
+  </div>
+  <!--常用网站工具-->
+  <div class="center-https">
+	  <uL>
+		  <li>steam</li>
+		  <li>Bililil</li>
+		  <li>NPM</li>
+		  <li>Github</li>
+		  <li></li>
+	  </uL>
+  </div>
+  
+  <!--尾页-->
+  <div class="footer">
+      <h6>CoderBy&nbsp;:&nbsp;Zzt For Beta 0.19</h6>
+  </div>
+  
+  
+  
+  
+  
+<!--js代码-->
+  <script>
+     function time(){
+      //首页时间设置
+        var today=new Date();   //获得当前时间
+        var hh=today.getHours();    //获得小时
+        var mm=today.getMinutes();  //获得分钟
+        var ss=today.getSeconds();  //获得秒
+        document.getElementById("myclock").innerHTML=hh+":"+mm+":"+ss;
+    }
+	
+	//使用setInterval()每间隔指定毫秒后调用time()
+    var myTime=setInterval("time()",1000);
+
+    //首页时间设置-----国外时间
+    function OtherTimes(){}
+	//设置-----------------
+	
+    //设置：加购属性
+	//公共变量
+	var btn1=document.querySelector('.header-btn2')//二级菜单变量
+	var btnSearch1=document.querySelector('.header-btn3-1')//搜索菜单栏
+	var btnSearch2=document.querySelector('.header-btn3-2')//音乐菜单栏
+	var btnSearch3=document.querySelector('.header-btn3-3')//其他搜索栏
+	
+	
+	//显示展示设置函数
+    function Settings() { 
+      if(btn1.style.display=='none'){
+        btn1.style.display='flex'
+       }else{
+        btn1.style.display='none'	//隐藏2级
+		btnSearch1.style.display='none'//隐藏搜索
+		btnSearch2.style.display='none'//隐藏音乐
+		btnSearch3.style.display='none'//隐藏其他
+     }
+   }
+    //设置——搜素设置
+    function search1(){
+      if(btnSearch1.style.display=='none'){
+        btnSearch1.style.display='flex'
+		btnSearch2.style.display='none'//隐藏音乐
+		btnSearch3.style.display='none'//隐藏其他
+      }else{
+        btnSearch1.style.display='none'
+      }
+    }
+    //设置——音乐设置
+    function music(){
+	  if(btnSearch2.style.display=='none'){
+		  btnSearch2.style.display='flex'
+		  btnSearch1.style.display='none'//隐藏搜索
+		  btnSearch3.style.display='none'//隐藏其他
+	  }else{
+		  btnSearch2.style.display='none'
+	  }
+    }
+    //设置-其他搜素
+    function otherSearch(){
+		if(btnSearch3.style.display=='none'){
+			btnSearch3.style.display='flex'
+			btnSearch1.style.display='none'//隐藏搜索
+			btnSearch2.style.display='none'//隐藏音乐
+		}else{
+			btnSearch3.style.display='none'
+		}
+    }
+	
+	//TODO:结束设置，非必要不进行优化---------------------
+	//功能实现
+	//功能实现：搜索引擎切换
+	//搜索变量参数---搜索引擎
+	
+	var bd1=document.getElementById("z")//百度(默认z)
+	var sg1=document.getElementById("sg")//搜狗
+	var by1=document.getElementById("by")//必应
+	var gg1=document.getElementById("gg")//谷歌
+	
+	var wyy1=document.getElementById("wyy")//网易云
+	var kg1=document.getElementById("kg")//酷狗
+	var Qm1=document.getElementById("Qm")//qq音乐
+	
+	var kd1=document.getElementById("kd")//快递
+	
+	//代码优化
+	
+	
+	//百度函数
+	function baidu1(){
+		if(bd1.id=='bd'){
+			bd1.id="z",sg1.id="sg",by1.id="by",gg1.id="gg",wyy1.id="wyy",kg1.id="kg",Qm1.id="Qm",kd1.id="kd"
+		}
+	}
+	//搜狗函数
+	function sougou1(){
+		if(sg1.id=='sg'){
+			bd1.id="bd",sg1.id="z",by1.id="by",gg1.id="gg",wyy1.id="wyy",kg1.id="kg",Qm1.id="Qm",kd1.id="kd"
+		}
+	}
+	//必应函数
+	function biying1(){
+		if(by1.id=='by'){
+			bd1.id="bd",sg1.id="sg",by1.id="z",gg1.id="gg",wyy1.id="wyy",kg1.id="kg",Qm1.id="Qm",kd1.id="kd"
+		}
+	}
+	//谷歌函数
+	function guge1(){
+		if(gg1.id=='gg'){
+			bd1.id="bd",sg1.id="sg",by1.id="by",gg1.id="z",wyy1.id="wyy",kg1.id="kg",Qm1.id="Qm",kd1.id="kd"
+		}
+	}
+	//功能实现：音乐搜索切换
+	function wangyiyun1(){
+		if(wyy1.id=='wyy'){
+			bd1.id="bd",sg1.id="sg",by1.id="by",gg1.id="gg",wyy1.id="z",kg1.id="kg",Qm1.id="Qm",kd1.id="kd"
+		}
+	}
+	function QQmusic(){
+		if(Qm1.id=='Qm'){
+			bd1.id="bd",sg1.id="sg",by1.id="by",gg1.id="gg",wyy1.id="wyy",kg1.id="kg",Qm1.id="z",kd1.id="kd"
+		}
+	}
+	function kugoumusic(){
+		if(kg1.id=='kg'){
+			bd1.id="bd",sg1.id="sg",by1.id="by",gg1.id="gg",wyy1.id="wyy",kg1.id="z",Qm1.id="Qm",kd1.id="kd"
+		}
+	}
+	//功能实现：其他搜索效果切换
+	function kuaidi1(){
+		if(kd1.id=='kd'){
+			bd1.id="bd",sg1.id="sg",by1.id="by",gg1.id="gg",wyy1.id="wyy",kg1.id="kg",Qm1.id="Qm",kd1.id="z"
+		}
+	}
+	
+	
+	//搜索按钮触发函数
+	function Search(){
+			
+	}
+	
+  </script>
+</body>
+</html>
