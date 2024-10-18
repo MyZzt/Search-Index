@@ -288,7 +288,12 @@
         var hh=today.getHours();    //获得小时
         var mm=today.getMinutes();  //获得分钟
         var ss=today.getSeconds();  //获得秒
-        document.getElementById("myclock").innerHTML=hh+":"+mm+":"+ss;
+	if(ss<10){
+		document.getElementById("myclock").innerHTML=hh+":"+mm+":"+"0"+ss;
+	}else{
+		document.getElementById("myclock").innerHTML=hh+":"+mm+":"+ss;
+	}
+        
     }
 	
 	//使用setInterval()每间隔指定毫秒后调用time()
